@@ -1,4 +1,4 @@
 breadPull
 =========
 
-breadPull GUI app for port of subs
+breadPull GUI app for port of subs. Currently in development
