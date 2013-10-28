@@ -29,7 +29,7 @@ void MainWindow::_link(breadData *obj)
 {
     //make sure user passed in valid object file
     if(obj == NULL) {
-        QMessageBox::critical(this,tr("Error"),tr("breadData passed is NULL"));
+        QMessageBox::critical(this,tr("Error_link()"),tr("breadData passed is NULL"));
         return;
     }
     //object is not NULL, so set internal data
@@ -75,6 +75,7 @@ void MainWindow::on_comboBox_activated(const QString &arg1)
 //show button is clicked
 void MainWindow::on_showBread_clicked()
 {
+    dit->readData();
     dit->gatherInput(internalState);
 }
 
@@ -82,4 +83,15 @@ void MainWindow::on_showBread_clicked()
 void MainWindow::on_actionNo_Tools_yet_triggered()
 {
 
+}
+
+
+void MainWindow::on_actionContact_me_about_issues_triggered()
+{
+    QMessageBox message;
+    message.setWindowTitle(tr("Feedback/issues"));
+    message.setTextFormat(Qt::RichText);
+    message.setText("<a href=\"mailto:brdcount.help@gmail.com\">brdcount.help@gmail.com</a>\nplease expect a couple days before a response, I'll try my best to answer your question/issue.");
+    message.setStandardButtons(QMessageBox::Ok);
+    message.exec();
 }

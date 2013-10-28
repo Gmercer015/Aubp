@@ -27,6 +27,8 @@ private slots:
 
     void on_actionNo_Tools_yet_triggered();
 
+    void on_actionContact_me_about_issues_triggered();
+
 private:
     Ui::MainWindow *ui;
     //determines if caterting order is present

@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    breadData dat("audit.dat");
+    breadData dat("format.dat");
     //link main window with bread data
     w._link(&dat);
     //show main window

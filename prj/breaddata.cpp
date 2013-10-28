@@ -11,6 +11,7 @@
 breadData::breadData(std::string fileIn)
 {
     fileName = fileIn;
+    RND_UP = false;
 }
 
 //grabs window object in order to display error messages/data
@@ -30,15 +31,39 @@ bool breadData::readData()
     std::ifstream inFile(fileName.c_str());
     //if the file cannot be read, critical message and return false
     if(!inFile.is_open()) {
-        QMessageBox::critical(mainWnd,QMainWindow::tr("Error"), QMainWindow::tr("Could not open file"));
+        QMessageBox::critical(mainWnd,QMainWindow::tr("Error_readData()"), QMainWindow::tr("Could not open file"));
         return false;
     }
+    std::stringstream info;
+    while(inFile >> readTMP) {
+        //ROUNDING BOOL READ IN
+        if(readTMP == "BOOLRND"){
+            inFile >> readTMP;
+            if(readTMP == "TRUE"){
+                RND_UP = true;
+                info  << "true ";
+            }else{
+                RND_UP = false;
+                info << "false ";}
+        }
+        if(readTMP == "DAILYSALES"){
+            for(int i = 0; i < 5; i++){
+                int projectedSales;
+                inFile >> projectedSales;
+                dailySales.push_back(projectedSales);
+                info << projectedSales << " ";
+            }
+        }
+    }
+    //debug infomation to show that the file is reading correctly
+    QMessageBox::information(mainWnd,QMainWindow::tr("info"),QMainWindow::tr(info.str().c_str()));
     return true;
 }
 
 void breadData::gatherInput(int IS)
 {
-
+    //wrap if statement to make sure these are set. IF NOT THE PROGRAM WILL FUCKING EXPLODE
+    if(usI != NULL && mainWnd != NULL){
     std::stringstream ss;
     switch(IS) {
         //no cater
@@ -63,7 +88,8 @@ void breadData::gatherInput(int IS)
             ss << whiteSticks << "," << wheatSticks;
             usI->Debug->setText(QMainWindow::tr(ss.str().c_str()));
         break;
-    }
+    }}else
+        QMessageBox::critical(mainWnd,QMainWindow::tr("Error_gatherInput()"),QMainWindow::tr("BreadOBJ not is not linked FATAL"));
 }
 
 

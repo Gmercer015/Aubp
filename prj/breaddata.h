@@ -34,13 +34,19 @@ public:
 private:
     Ui::MainWindow *usI;
     QWidget *mainWnd;
-    //daily sales of the week to be read in from data file
-    std::vector<std::string> dailySales;
     //filename
     std::string fileName;
     //stick amount
     unsigned int whiteSticks;
     unsigned int wheatSticks;
+    //vars that are determined by file data
+    //-------------------------------------
+    //round up or down on bread count default = FALSE
+    bool RND_UP;
+    //includes for every day of the week
+    std::vector<int> dailySales;
+    //-------------------------------------
+
 
 };
 
