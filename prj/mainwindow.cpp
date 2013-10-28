@@ -1,11 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <iostream>
+#include <string>
+#include <sstream>
 #include <QtWidgets>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    internalState(0)
+    internalState(0),
+    whiteSticks(0),
+    wheatSticks(0)
 {
     ui->setupUi(this);
     ui->wheatCL->hide();
@@ -56,18 +61,29 @@ void MainWindow::on_comboBox_activated(const QString &arg1)
 //show button is clicked
 void MainWindow::on_showBread_clicked()
 {
+    std::stringstream ss;
     switch(internalState) {
         //no cater
         case 0:
-
+            //stick count for use with algorithm
+            whiteSticks = ui->whiteIN->value();
+            wheatSticks = ui->wheatIN->value();
+            ss << whiteSticks << "," << wheatSticks;
+            ui->Debug->setText(tr(ss.str().c_str()));
         break;
         //mixed bread 1 IN
         case 1:
-
+            whiteSticks = ui->whiteIN->value() + (ui->whiteCIN->value() / 2) / 2;
+            wheatSticks = ui->wheatIN->value() + (ui->whiteCIN->value() / 2) / 2;
+            ss << whiteSticks << "," << wheatSticks;
+            ui->Debug->setText(tr(ss.str().c_str()));
         break;
         //custom 2 IN
         case 2:
-
+            whiteSticks = ui->whiteIN->value() + ui->whiteCIN->value();
+            wheatSticks = ui->wheatIN->value() + ui->wheatCIN->value();
+            ss << whiteSticks << "," << wheatSticks;
+            ui->Debug->setText(tr(ss.str().c_str()));
         break;
     }
 

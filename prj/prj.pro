@@ -14,8 +14,10 @@ TEMPLATE = app
 RC_FILE = icon.rc
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    breaddata.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    breaddata.h
 
 FORMS    += mainwindow.ui

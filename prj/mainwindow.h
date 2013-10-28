@@ -24,6 +24,9 @@ private:
     Ui::MainWindow *ui;
     //determines if caterting order is present
     unsigned short internalState;
+    //amount of sticks for algorithm
+    unsigned int whiteSticks;
+    unsigned int wheatSticks;
 };
 
 #endif // MAINWINDOW_H
