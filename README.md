@@ -1,9 +1,15 @@
 breadPull
 =========
+Purpose:
 
-breadPull GUI app for port of subs.
+	Make the bread pull standarized across port of subs with an easy to use
+	yet highly customizable program that saves time and is free of human 
+	error. Currenty being dev'd on my own time in hopes of bettering the
+	company when finished
+
 
 Program stucture breakdown:
+
 	Main-
 		core file, initializes object needed and links the window with
 		our data object. executes QApp's main loop to run GUI
