@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "breaddata.h"
+
+class breadData;
 
 namespace Ui {
 class MainWindow;
@@ -15,18 +18,21 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    void _link(breadData *obj);
+
 private slots:
     void on_comboBox_activated(const QString &arg1);
 
     void on_showBread_clicked();
 
+    void on_actionNo_Tools_yet_triggered();
+
 private:
     Ui::MainWindow *ui;
     //determines if caterting order is present
     unsigned short internalState;
-    //amount of sticks for algorithm
-    unsigned int whiteSticks;
-    unsigned int wheatSticks;
+    //bread data for program!
+    breadData *dit;
 };
 
 #endif // MAINWINDOW_H

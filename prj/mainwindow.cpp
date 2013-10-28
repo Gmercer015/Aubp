@@ -8,20 +8,34 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    internalState(0),
-    whiteSticks(0),
-    wheatSticks(0)
+    internalState(0)
 {
     ui->setupUi(this);
+    //hide catering buttons until user selections catering option
     ui->wheatCL->hide();
     ui->whiteCL->hide();
     ui->wheatCIN->hide();
     ui->whiteCIN->hide();
 }
 
+
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+//link the main window with a bread object to be used for calculations and auditing
+void MainWindow::_link(breadData *obj)
+{
+    //make sure user passed in valid object file
+    if(obj == NULL) {
+        QMessageBox::critical(this,tr("Error"),tr("breadData passed is NULL"));
+        return;
+    }
+    //object is not NULL, so set internal data
+    dit = obj;
+    //link bread object with this window
+    dit->_brdLink(this,ui);
 }
 
 //determines if a catering order exists
@@ -61,30 +75,11 @@ void MainWindow::on_comboBox_activated(const QString &arg1)
 //show button is clicked
 void MainWindow::on_showBread_clicked()
 {
-    std::stringstream ss;
-    switch(internalState) {
-        //no cater
-        case 0:
-            //stick count for use with algorithm
-            whiteSticks = ui->whiteIN->value();
-            wheatSticks = ui->wheatIN->value();
-            ss << whiteSticks << "," << wheatSticks;
-            ui->Debug->setText(tr(ss.str().c_str()));
-        break;
-        //mixed bread 1 IN
-        case 1:
-            whiteSticks = ui->whiteIN->value() + (ui->whiteCIN->value() / 2) / 2;
-            wheatSticks = ui->wheatIN->value() + (ui->whiteCIN->value() / 2) / 2;
-            ss << whiteSticks << "," << wheatSticks;
-            ui->Debug->setText(tr(ss.str().c_str()));
-        break;
-        //custom 2 IN
-        case 2:
-            whiteSticks = ui->whiteIN->value() + ui->whiteCIN->value();
-            wheatSticks = ui->wheatIN->value() + ui->wheatCIN->value();
-            ss << whiteSticks << "," << wheatSticks;
-            ui->Debug->setText(tr(ss.str().c_str()));
-        break;
-    }
+    dit->gatherInput(internalState);
+}
+
+
+void MainWindow::on_actionNo_Tools_yet_triggered()
+{
 
 }
