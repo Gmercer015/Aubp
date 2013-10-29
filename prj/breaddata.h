@@ -9,6 +9,7 @@
 #include "ui_mainwindow.h"
 #include "resultwnd.h"
 
+
 class MainWindow;
 class resultWnd;
 

@@ -38,15 +38,30 @@ void breadData::_brdLink(QMainWindow *linker, Ui::MainWindow *ui)
 
 void breadData::writeData()
 {
-
+    std::ofstream writeOut;
+    writeOut.open("format.dat");
+    if(!writeOut.is_open()){
+        QMessageBox::critical(mainWnd,QMainWindow::tr("Error_writeData()"),QMainWindow::tr("Could not open file to write"));
+        return;
+    }
+    writeOut << "ROUNDUP\n";
+    if(RND_UP)
+        writeOut << "TRUE\n";
+    else
+        writeOut << "FALSE\n";
+    writeOut << "\nDAILYSALES\n";
+    for(int i=0; i<7;i++)
+        writeOut << dailySales.at(i) << " ";
+    writeOut << "\n\nBREADPERBOX\n" << stcksPerBox << "\n";
+    writeOut << "\nBREADRNDUP\n" << rndSticksTo << "\n";
+    writeOut << "\nWHITEWHEATLEFT\n" << whiteLeft << " " << wheatLeft << "\n";
+    writeOut << "\nBRDCONST\n" << breadCost << "\n";
+    writeOut.close();
 }
 
 //read in data file that provides all information
 bool breadData::readData()
 {
-    //INFO = DEBUG
-    //TO BE REMOVED
-
     std::string readTMP;                        //temp string to grab file data
     std::ifstream inFile(fileName.c_str());     //open file to read
     //if the file cannot be read, critical message and return false
@@ -83,6 +98,7 @@ bool breadData::readData()
             inFile >> breadCost;
         }
     }
+    inFile.close();
     return true;
 }
 
@@ -135,6 +151,7 @@ void breadData::calculateBread()
     wheatLeft = wheatLeft - finalWheat;
     if(wheatLeft < 0)
         wheatLeft = 30 + wheatLeft;
+
     //show results in dialog box
     fin = new resultWnd(mainWnd, this);
     fin->show();

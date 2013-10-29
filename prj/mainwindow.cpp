@@ -74,6 +74,10 @@ void MainWindow::on_comboBox_activated(const QString &arg1)
     }
     //if user switches back to 'none' then internal state must be false
     if(arg1 == tr("None")) {
+        ui->whiteCL->hide();
+        ui->wheatCL->hide();
+        ui->whiteCIN->hide();
+        ui->wheatCIN->hide();
         internalState = 0;
     }
 }
@@ -83,8 +87,8 @@ void MainWindow::on_showBread_clicked()
 {
     dit->readData();                    //read data from file
     dit->gatherInput(internalState);    //read user entered input
-    dit->calculateBread();
-    dit->writeData();
+    dit->calculateBread();              //find results
+    dit->writeData();                   //write any new data to file
 }
 
 
