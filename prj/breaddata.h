@@ -3,29 +3,20 @@
 
 #include <vector>
 #include <string>
+#include "ui_mainwindow.h"
 #include <QtWidgets>
 #include <QMainWindow>
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include "resultwnd.h"
 
-
-class MainWindow;
 class resultWnd;
 
 class breadData
 {
 public:
     breadData(std::string);
+    breadData(){}
     ~breadData();
     //read in data file that provides all information
     bool readData();
-
-    //access functions
-    unsigned int getFinalWhite(){return finalWhite;}
-    unsigned int getFinalWheat(){return finalWheat;}
-    int getWhiteLeft(){return whiteLeft;}
-    int getWheatLeft(){return wheatLeft;}
 
     //link with object that grabs bread
     void _brdLink(QMainWindow *linker=NULL, Ui::MainWindow *ui=NULL);
@@ -38,9 +29,28 @@ public:
 
     void writeData();
 
+    //for quick tools
+    void revertSticks();
+
+    //access functions
+    unsigned int getFinalWhite(){return finalWhite;}
+    unsigned int getFinalWheat(){return finalWheat;}
+    int getWhiteLeft(){return whiteLeft;}
+    int getWheatLeft(){return wheatLeft;}
+    bool getRND_UP();
+    int getStcksPerBox();
+    int getRndSticksTo();
+    double getBreadCost();
+    std::vector<unsigned int>::iterator getPointerSales();
     //set functions
-    void setWhite(unsigned int x){ whiteSticks = x;}
-    void setWheat(unsigned int x){ wheatSticks = x;}
+    void setRND_UP(bool);
+    void setStcksPerBox(int);
+    void setRndSticksTo(int);
+    void setWhiteLeft(int);
+    void setWheatLeft(int);
+    void setBreadCost(double);
+    void setDailySales(unsigned int*);
+
 
 protected:
     int whiteSticks;                                //user input
@@ -54,6 +64,8 @@ protected:
     int rndSticksTo;                                //default = 4
     int whiteLeft;                                  //default = 30
     int wheatLeft;                                  //default = 30
+    int bckUpWhite;                                 //quick revert to last val
+    int bckUpWheat;                                 //quick revert to last val
     double breadCost;                               //default = 18.5
     //includes for every day of the week
     std::vector<unsigned int> dailySales;           //sales throughout the week

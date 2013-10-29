@@ -140,13 +140,14 @@
      <x>0</x>
      <y>0</y>
      <width>364</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>Tools</string>
     </property>
+    <addaction name="actionRevert_stcks_Left_to_last_value"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -177,7 +178,12 @@
   </action>
   <action name="actionEdit_values">
    <property name="text">
-    <string>Edit Values</string>
+    <string>Edit/View Values</string>
+   </property>
+  </action>
+  <action name="actionRevert_stcks_Left_to_last_value">
+   <property name="text">
+    <string>Revert Sticks To Prev</string>
    </property>
   </action>
  </widget>

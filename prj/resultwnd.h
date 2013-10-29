@@ -2,7 +2,6 @@
 #define RESULTWND_H
 
 #include <QGroupBox>
-#include "breaddata.h"
 
 class breadData;
 

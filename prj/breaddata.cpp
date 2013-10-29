@@ -1,6 +1,7 @@
-#include "breaddata.h"
-#include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "mainwindow.h"
+#include "breaddata.h"
+#include "resultwnd.h"
 #include <QMessageBox>
 #include <QApplication>
 #include <QMainWindow>
@@ -18,6 +19,8 @@ breadData::breadData(std::string fileIn):
     rndSticksTo(4),
     whiteLeft(30),
     wheatLeft(30),
+    bckUpWhite(30),
+    bckUpWheat(30),
     breadCost(18.5)
 {
     fileName = fileIn;
@@ -55,6 +58,7 @@ void breadData::writeData()
     writeOut << "\n\nBREADPERBOX\n" << stcksPerBox << "\n";
     writeOut << "\nBREADRNDUP\n" << rndSticksTo << "\n";
     writeOut << "\nWHITEWHEATLEFT\n" << whiteLeft << " " << wheatLeft << "\n";
+    writeOut << "\nBCKUP\n" << bckUpWhite << " " << bckUpWheat << "\n";
     writeOut << "\nBRDCONST\n" << breadCost << "\n";
     writeOut.close();
 }
@@ -96,6 +100,9 @@ bool breadData::readData()
         }
         if(readTMP == "BRDCONST"){
             inFile >> breadCost;
+        }
+        if(readTMP == "BCKUP"){
+            inFile >> bckUpWhite >> bckUpWheat;
         }
     }
     inFile.close();
@@ -144,6 +151,8 @@ void breadData::calculateBread()
     finalWhite = round((int)bread - whiteSticks);
     finalWheat = round((int)bread - wheatSticks);
 
+    bckUpWhite = whiteLeft;                 //used for quick revert
+    bckUpWheat = wheatLeft;                 //quick revet back to changes
     //find sticks remaining from last box
     whiteLeft = whiteLeft - finalWhite;
     if(whiteLeft < 0)
@@ -166,3 +175,64 @@ int breadData::round(int num)
     else
         return num + (rndSticksTo - (num % rndSticksTo));
 }
+
+void breadData::revertSticks()
+{
+    whiteLeft = bckUpWhite;
+    wheatLeft = bckUpWheat;
+}
+
+bool breadData::getRND_UP()
+{
+    return RND_UP;
+}
+int breadData::getStcksPerBox()
+{
+    return stcksPerBox;
+}
+int breadData::getRndSticksTo()
+{
+    return rndSticksTo;
+}
+double breadData::getBreadCost()
+{
+    return breadCost;
+}
+std::vector<unsigned int>::iterator breadData::getPointerSales()
+{
+    std::vector<unsigned int>::iterator it = dailySales.begin();
+    return it;
+}
+
+void breadData::setRND_UP(bool b)
+{
+
+}
+
+void breadData::setStcksPerBox(int x)
+{
+
+}
+
+void breadData::setRndSticksTo(int x)
+{
+
+}
+
+void breadData::setWhiteLeft(int x)
+{
+
+}
+
+void breadData::setWheatLeft(int x)
+{
+
+}
+
+void breadData::setBreadCost(double y)
+{
+
+}
+
+void setDailySales(unsigned int*);
+

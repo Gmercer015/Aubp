@@ -2,10 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "breaddata.h"
-#include "settings.h"
+
 
 class breadData;
+class Settings;
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +29,8 @@ private slots:
     void on_actionContact_me_about_issues_triggered();
 
     void on_actionEdit_values_triggered();
+
+    void on_actionRevert_stcks_Left_to_last_value_triggered();
 
 private:
     Ui::MainWindow *ui;

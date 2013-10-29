@@ -1,4 +1,6 @@
 #include "mainwindow.h"
+#include "settings.h"
+#include "breaddata.h"
 #include "ui_mainwindow.h"
 #include "settings.h"
 #include <iostream>
@@ -13,7 +15,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     setFixedHeight(273);
     setFixedWidth(364);
-    s = new Settings(this);
     ui->setupUi(this);
     //hide catering buttons until user selections catering option
     ui->wheatCL->hide();
@@ -94,6 +95,7 @@ void MainWindow::on_showBread_clicked()
 
 void MainWindow::on_actionEdit_values_triggered()
 {
+    s = new Settings(this);
     s->show();
 }
 
@@ -106,4 +108,13 @@ void MainWindow::on_actionContact_me_about_issues_triggered()
     message.setText("<a href=\"mailto:brdcount.help@gmail.com\">brdcount.help@gmail.com</a>\nplease expect a couple days before a response, I'll try my best to answer your question/issue.");
     message.setStandardButtons(QMessageBox::Ok);
     message.exec();
+}
+
+void  MainWindow::on_actionRevert_stcks_Left_to_last_value_triggered()
+{
+    if(QMessageBox::information(this,tr("Revert?"),tr("revert sticks to prev recorded?"),QMessageBox::Yes,QMessageBox::No) == QMessageBox::Yes)
+        dit->revertSticks();
+    else
+        return;
+
 }
