@@ -27,13 +27,14 @@ Program stucture breakdown:
 		option for a much larger program by linking the object with a 
 		child window.
 	Settings-
-		implemented to create a highly customizable enviroment, hopefully 
-		to encompass more than just store 100 of Port of Subs. Settings is
-		a dialog window that will display all given values from an encrypted
-		file and allow the user to change them ONLY THROUGH THIS WINDOW. 
-		changing the file will corrupt the program
+		implemented to create a highly customizable enviroment, 
+		hopefully  to encompass more than just store 100 of Port
+		of Subs. Settings is a dialog window that will display all
+		given values from an encrypted file and allow the user to 
+		change them ONLY THROUGH THIS WINDOW.changing the file 
+		will corrupt the program
 	ResultsWnd-
-		self explanatory. this is a widget that displays the results of the 
-		bread pull. Instead of opening a new window the ResultsWnd replacing 
-		the screen by overlaying itself above MainWindow, then  returning to 
-		MainWindow after the user hits 'return'
+		self explanatory. this is a widget that displays the results 
+		of the bread pull.Instead of opening a new window the ResultsWnd
+		replacing the screen by overlaying itself above MainWindow, then
+		returning to MainWindow after the user hits 'return'
