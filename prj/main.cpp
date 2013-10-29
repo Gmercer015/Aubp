@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "breaddata.h"
 #include <string>
-#include <QApplication>\
+#include <QApplication>
 
 int main(int argc, char *argv[])
 {

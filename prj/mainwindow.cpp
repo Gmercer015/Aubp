@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "settings.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -10,6 +11,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     internalState(0)
 {
+    setFixedHeight(273);
+    setFixedWidth(364);
+    s = new Settings(this);
     ui->setupUi(this);
     //hide catering buttons until user selections catering option
     ui->wheatCL->hide();
@@ -21,6 +25,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    //free memory
+    delete s;
     delete ui;
 }
 
@@ -75,14 +81,16 @@ void MainWindow::on_comboBox_activated(const QString &arg1)
 //show button is clicked
 void MainWindow::on_showBread_clicked()
 {
-    dit->readData();
-    dit->gatherInput(internalState);
+    dit->readData();                    //read data from file
+    dit->gatherInput(internalState);    //read user entered input
+    dit->calculateBread();
+    dit->writeData();
 }
 
 
-void MainWindow::on_actionNo_Tools_yet_triggered()
+void MainWindow::on_actionEdit_values_triggered()
 {
-
+    s->show();
 }
 
 

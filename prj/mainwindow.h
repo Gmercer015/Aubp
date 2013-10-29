@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "breaddata.h"
+#include "settings.h"
 
 class breadData;
 
@@ -25,15 +26,16 @@ private slots:
 
     void on_showBread_clicked();
 
-    void on_actionNo_Tools_yet_triggered();
-
     void on_actionContact_me_about_issues_triggered();
+
+    void on_actionEdit_values_triggered();
 
 private:
     Ui::MainWindow *ui;
     //determines if caterting order is present
     unsigned short internalState;
     //bread data for program!
+    Settings *s;
     breadData *dit;
 };
 

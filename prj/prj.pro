@@ -15,9 +15,15 @@ RC_FILE = icon.rc
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    breaddata.cpp
+    breaddata.cpp \
+    settings.cpp \
+    resultwnd.cpp
 
 HEADERS  += mainwindow.h \
-    breaddata.h
+    breaddata.h \
+    settings.h \
+    resultwnd.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    settings.ui \
+    resultwnd.ui

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>358</width>
-    <height>241</height>
+    <width>364</width>
+    <height>273</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <widget class="QPushButton" name="showBread">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>142</x>
       <y>160</y>
       <width>81</width>
       <height>31</height>
@@ -139,22 +139,20 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>358</width>
-     <height>20</height>
+     <width>364</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>Tools</string>
     </property>
-    <addaction name="actionNo_Tools_yet"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
      <string>Vars</string>
     </property>
-    <addaction name="actionModify"/>
-    <addaction name="actionNew_ENVVAR_dir"/>
+    <addaction name="actionEdit_values"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -167,39 +165,19 @@
    <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
   </widget>
-  <action name="actionEnviromentVars">
-   <property name="text">
-    <string>EnviromentVars</string>
-   </property>
-  </action>
-  <action name="actionModify">
-   <property name="text">
-    <string>Modify</string>
-   </property>
-  </action>
-  <action name="actionNew_ENVVAR_dir">
-   <property name="text">
-    <string>New ENVVAR dir</string>
-   </property>
-  </action>
-  <action name="actionRound">
-   <property name="text">
-    <string>Round</string>
-   </property>
-  </action>
   <action name="actionHelp_me_please">
    <property name="text">
-    <string>How does this crap work</string>
-   </property>
-  </action>
-  <action name="actionNo_Tools_yet">
-   <property name="text">
-    <string>No Tools yet</string>
+    <string>Instructions</string>
    </property>
   </action>
   <action name="actionContact_me_about_issues">
    <property name="text">
     <string>Feedback/Issues?</string>
+   </property>
+  </action>
+  <action name="actionEdit_values">
+   <property name="text">
+    <string>Edit Values</string>
    </property>
   </action>
  </widget>
