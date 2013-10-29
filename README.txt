@@ -32,6 +32,6 @@ Program stucture breakdown:
 		file will corrupt the program
 	ResultsWnd-
 		self explanatory. this is a widget that displays the results of the bread
-		pull. Instead of opening a new window the ResultsWnd replacing the screen by
-		overlaying itself above MainWindow, then  returning to MainWindow after the
-		user hits 'return'
+		pull. Instead of opening a new window the ResultsWnd replacing the screen
+		by overlaying itself above MainWindow, then  returning to MainWindow after
+		the user hits 'return'
