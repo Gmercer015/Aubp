@@ -16,8 +16,13 @@ public:
     explicit Settings(QWidget *parent = 0,breadData *cp=0);
     Settings();
     ~Settings();
+    void showData();
+    void writeBackToFileUpdate();
+private slots:
+    void on_WriteCance_accepted();
 
 private:
+
     Ui::Settings *ui;
     breadData *cpy;
 };

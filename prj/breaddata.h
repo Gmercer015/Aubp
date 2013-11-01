@@ -7,6 +7,16 @@
 #include <QtWidgets>
 #include <QMainWindow>
 
+enum DAY{
+    SUN=0,
+    MON=1,
+    TUES=2,
+    WEDS=3,
+    THURS=4,
+    FRI=5,
+    SAT=6
+};
+
 class resultWnd;
 
 class breadData
@@ -41,7 +51,7 @@ public:
     int getStcksPerBox();
     int getRndSticksTo();
     double getBreadCost();
-    std::vector<unsigned int>::iterator getPointerSales();
+    int getEstSales(DAY);
     //set functions
     void setRND_UP(bool);
     void setStcksPerBox(int);
@@ -49,7 +59,7 @@ public:
     void setWhiteLeft(int);
     void setWheatLeft(int);
     void setBreadCost(double);
-    void setDailySales(unsigned int*);
+    void setDailySales(std::vector<unsigned int>);
 
 
 protected:

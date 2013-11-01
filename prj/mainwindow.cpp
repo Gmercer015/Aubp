@@ -43,6 +43,8 @@ void MainWindow::_link(breadData *obj)
     dit = obj;
     //link bread object with this window
     dit->_brdLink(this,ui);
+    dit->readData();                    //read data from file(kinda like ctr
+    s = new Settings(this,dit); //main window and breadData object for displaying
 }
 
 //determines if a catering order exists
@@ -86,7 +88,6 @@ void MainWindow::on_comboBox_activated(const QString &arg1)
 //show button is clicked
 void MainWindow::on_showBread_clicked()
 {
-    dit->readData();                    //read data from file
     dit->gatherInput(internalState);    //read user entered input
     dit->calculateBread();              //find results
     dit->writeData();                   //write any new data to file
@@ -95,7 +96,7 @@ void MainWindow::on_showBread_clicked()
 
 void MainWindow::on_actionEdit_values_triggered()
 {
-    s = new Settings(this);
+    s->showData();
     s->show();
 }
 

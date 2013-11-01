@@ -1,7 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>Settings</class>
  <widget class="QDialog" name="Settings">
   <property name="geometry">
@@ -15,14 +13,17 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
+  <widget class="QDialogButtonBox" name="WriteCance">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>240</y>
-     <width>341</width>
+     <x>110</x>
+     <y>250</y>
+     <width>171</width>
      <height>32</height>
     </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -31,12 +32,322 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
+  <widget class="QLabel" name="DailySalesL">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>150</y>
+     <width>201</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Daily Sales Estimate:</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>125</y>
+     <width>401</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>190</y>
+     <width>381</width>
+     <height>49</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_7">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QLabel" name="MonL">
+        <property name="font">
+         <font>
+          <family>Serif</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>Mon</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="MonIN"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QLabel" name="TuesL">
+        <property name="font">
+         <font>
+          <family>Serif</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>Tues</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="TuesIN"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <item>
+       <widget class="QLabel" name="WedL">
+        <property name="font">
+         <font>
+          <family>Serif</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>Weds</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="WedsIN"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_6">
+      <item>
+       <widget class="QLabel" name="ThursL">
+        <property name="font">
+         <font>
+          <family>Serif</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>Thurs</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="ThursIN"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_7">
+      <item>
+       <widget class="QLabel" name="FriL">
+        <property name="font">
+         <font>
+          <family>Serif</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>Fri</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="FriIN"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_8">
+      <item>
+       <widget class="QLabel" name="SatL">
+        <property name="font">
+         <font>
+          <family>Serif</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>Sat</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="SatIN"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_9">
+      <item>
+       <widget class="QLabel" name="SunL">
+        <property name="font">
+         <font>
+          <family>Serif</family>
+         </font>
+        </property>
+        <property name="text">
+         <string>Sun</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="SunIN"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>191</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="BreadCostL">
+        <property name="text">
+         <string>Bread cost:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDoubleSpinBox" name="BreadCostIN"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="WhiteLeftL">
+        <property name="text">
+         <string>White left:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="WhiteLeftIN"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="WheatLeftL">
+        <property name="text">
+         <string>Wheat left:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="WheatLeftIN"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>10</y>
+     <width>181</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QLabel" name="RND_UPL">
+        <property name="text">
+         <string>Round Up(all)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="RNDUPIN">
+        <item>
+         <property name="text">
+          <string>TRUE</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>FALSE</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QLabel" name="StcksPerBoxL">
+        <property name="text">
+         <string>Sticks per box:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="StcksPerBoxIN"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <item>
+       <widget class="QLabel" name="RndBreadToL">
+        <property name="text">
+         <string>Round bread to:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="RndBreadToIN"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
  </widget>
- <pixmapfunction/>
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>WriteCance</sender>
    <signal>accepted()</signal>
    <receiver>Settings</receiver>
    <slot>accept()</slot>
@@ -52,7 +363,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>WriteCance</sender>
    <signal>rejected()</signal>
    <receiver>Settings</receiver>
    <slot>reject()</slot>

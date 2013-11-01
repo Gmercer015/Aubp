@@ -70,8 +70,10 @@ bool breadData::readData()
     std::ifstream inFile(fileName.c_str());     //open file to read
     //if the file cannot be read, critical message and return false
     if(!inFile.is_open()) {
-        QMessageBox::critical(mainWnd,QMainWindow::tr("Error_readData()"), QMainWindow::tr("Could not open file"));
-        return false;
+        QMessageBox::critical(mainWnd,QMainWindow::tr("Error_readData()"), QMainWindow::tr("Data lost or corrupted, app disabling"));
+        usI->showBread->setText(QMainWindow::tr("Disabled"));                     //hide actions that will crash program
+        usI->showBread->blockSignals(true);
+        usI->actionEdit_values->blockSignals(true);                                                 //dont let user do this shit, GONNA FUCKIN CRASH
     }
     while(inFile >> readTMP) {
 
@@ -198,41 +200,63 @@ double breadData::getBreadCost()
 {
     return breadCost;
 }
-std::vector<unsigned int>::iterator breadData::getPointerSales()
+
+int breadData::getEstSales(DAY d)
 {
-    std::vector<unsigned int>::iterator it = dailySales.begin();
-    return it;
+    switch(d) {
+        case MON:
+            return dailySales.at(1);
+        case TUES:
+            return dailySales.at(2);
+        case WEDS:
+            return dailySales.at(3);
+        case THURS:
+            return dailySales.at(4);
+        case FRI:
+            return dailySales.at(5);
+        case SAT:
+            return dailySales.at(6);
+        case SUN:
+            return dailySales.at(0);
+        default:
+            return -1;
+    }
 }
 
 void breadData::setRND_UP(bool b)
 {
-
+    RND_UP = b;
 }
 
 void breadData::setStcksPerBox(int x)
 {
-
+    stcksPerBox = x;
 }
 
 void breadData::setRndSticksTo(int x)
 {
-
+    rndSticksTo = x;
 }
 
 void breadData::setWhiteLeft(int x)
 {
-
+    whiteLeft = x;
 }
 
 void breadData::setWheatLeft(int x)
 {
-
+    wheatLeft = x;
 }
 
 void breadData::setBreadCost(double y)
 {
-
+    breadCost = y;
 }
 
-void setDailySales(unsigned int*);
+void breadData::setDailySales(std::vector<unsigned int> cpy)
+{
+    for(int i=0; i<(int)dailySales.size();i++) {        //loop for each day
+        dailySales.at(i) = cpy.at(i);
+    }
+}
 

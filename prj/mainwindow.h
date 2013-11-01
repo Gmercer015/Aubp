@@ -19,7 +19,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void _link(breadData *obj);
+    void _link(breadData *obj);\
 
 private slots:
     void on_comboBox_activated(const QString &arg1);
