@@ -21,32 +21,38 @@ breadData::breadData(std::string fileIn):
     wheatLeft(30),
     bckUpWhite(30),
     bckUpWheat(30),
-    breadCost(18.5)
+    breadCost(18.5),
+    fin(NULL)
 {
-    fileName = fileIn;
+    for(int i=0; i<WEEK_COUNT;i++)              //reserve 7 spaces
+        dailySales.push_back(1000);             //default sales estimate set at 1000
+    fileName = fileIn;                          //set file name
 }
 
 breadData::~breadData()
 {
-    delete fin;
+    if(fin != NULL)                         //deleting uninit object will SEG FAULT LIKA BITCH
+        delete fin;                         //free result window
 }
 
-//grabs window object in order to display error messages/data
+//pretty much the real cntr
 void breadData::_brdLink(QMainWindow *linker, Ui::MainWindow *ui)
 {
-    //set the internal window to display data to mainWnd
-    mainWnd = linker;
-    usI = ui;
+    mainWnd = linker;           //mainWnd is used to display messagebox's and limited external control of window
+    usI = ui;                   //grab a copy of the UI for manipulation
+    fin = new resultWnd(mainWnd);
+    fin->hide();                //dont show it yet goddammit
 }
 
 void breadData::writeData()
 {
     std::ofstream writeOut;
     writeOut.open("format.dat");
-    if(!writeOut.is_open()){
+    if(!writeOut.is_open()){            //never happens unless someone gets real retarded like`
         QMessageBox::critical(mainWnd,QMainWindow::tr("Error_writeData()"),QMainWindow::tr("Could not open file to write"));
         return;
     }
+    //write all data to file in given format
     writeOut << "ROUNDUP\n";
     if(RND_UP)
         writeOut << "TRUE\n";
@@ -63,17 +69,16 @@ void breadData::writeData()
     writeOut.close();
 }
 
-//read in data file that provides all information
+
 bool breadData::readData()
 {
     std::string readTMP;                        //temp string to grab file data
     std::ifstream inFile(fileName.c_str());     //open file to read
-    //if the file cannot be read, critical message and return false
-    if(!inFile.is_open()) {
-        QMessageBox::critical(mainWnd,QMainWindow::tr("Error_readData()"), QMainWindow::tr("Data lost or corrupted, app disabling"));
-        usI->showBread->setText(QMainWindow::tr("Disabled"));                     //hide actions that will crash program
-        usI->showBread->blockSignals(true);
-        usI->actionEdit_values->blockSignals(true);                                                 //dont let user do this shit, GONNA FUCKIN CRASH
+    if(!inFile.is_open()) {                     //if the file cannot be read, critical message and return false
+        if(QMessageBox::question(mainWnd,QMainWindow::tr("Data not found"),QMainWindow::tr("The application could not find format.dat, would you like to create a new data set?"),QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes)
+            writeData();
+        else
+            return false;
     }
     while(inFile >> readTMP) {
 
@@ -88,7 +93,7 @@ bool breadData::readData()
             for(int i = 0; i < 7; i++){
                 int projectedSales;
                 inFile >> projectedSales;
-                dailySales.push_back(projectedSales);
+                dailySales.at(i) = projectedSales;
             }
         }
         if(readTMP == "BREADPERBOX"){           //sticks per box
@@ -100,10 +105,10 @@ bool breadData::readData()
         if(readTMP == "WHITEWHEATLEFT"){        //sticks left in freezer
             inFile >> whiteLeft >> wheatLeft;
         }
-        if(readTMP == "BRDCONST"){
+        if(readTMP == "BRDCONST"){              //bread cost
             inFile >> breadCost;
         }
-        if(readTMP == "BCKUP"){
+        if(readTMP == "BCKUP"){                 //back up for sticks left(revert purposes)
             inFile >> bckUpWhite >> bckUpWheat;
         }
     }
@@ -111,24 +116,24 @@ bool breadData::readData()
     return true;
 }
 
-void breadData::gatherInput(int IS)
+void breadData::gatherInput(STATE IS)
 {
     //wrap if statement to make sure these are set. IF NOT THE PROGRAM WILL FUCKING EXPLODE
     if(usI != NULL && mainWnd != NULL){
     switch(IS) {
         //no cater
-        case 0:
+        case NONE:
             //stick count for use with algorithm
             whiteSticks = usI->whiteIN->value();
             wheatSticks = usI->wheatIN->value();
         break;
         //mixed bread 1 IN
-        case 1:
+        case MIXED:
             whiteSticks = usI->whiteIN->value() - ceil(usI->whiteCIN->value() / 4.0);
             wheatSticks = usI->wheatIN->value() - ceil(usI->whiteCIN->value() / 4.0);
         break;
         //custom 2 IN
-        case 2:
+        case CUSTOM:
             whiteSticks = usI->whiteIN->value() - usI->whiteCIN->value();
             wheatSticks = usI->wheatIN->value() - usI->wheatCIN->value();
         break;
@@ -158,13 +163,13 @@ void breadData::calculateBread()
     //find sticks remaining from last box
     whiteLeft = whiteLeft - finalWhite;
     if(whiteLeft < 0)
-        whiteLeft = 30 + whiteLeft;
+        whiteLeft = stcksPerBox + whiteLeft;
     wheatLeft = wheatLeft - finalWheat;
     if(wheatLeft < 0)
-        wheatLeft = 30 + wheatLeft;
+        wheatLeft = stcksPerBox + wheatLeft;
 
-    //show results in dialog box
-    fin = new resultWnd(mainWnd, this);
+    //display data and show window
+    fin->res(this);
     fin->show();
 }
 

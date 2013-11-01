@@ -5,13 +5,10 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    breadData dat("format.dat");
-    //link main window with bread data
-    w._link(&dat);
-    //show main window
-    w.show();
-    //execute loop
-    return a.exec();
+    QApplication a(argc, argv);         //internal app
+    MainWindow w;                       //main window
+    breadData dat("format.dat");        //create bread object
+    w._link(&dat);                      //link main window with bread data
+    w.show();                           //show main window
+    return a.exec();                    //execute loop
 }

@@ -3,13 +3,17 @@
 #include "ui_resultwnd.h"
 #include <sstream>
 
-resultWnd::resultWnd(QWidget *parent, breadData *dat) :
+resultWnd::resultWnd(QWidget *parent) :
     QGroupBox(parent),
     ui(new Ui::resultWnd)
 {
+    ui->setupUi(this);
+}
+
+void resultWnd::res(breadData *dat)
+{
     std::stringstream ss;
     ss << dat->getFinalWhite() << " sticks of white";
-    ui->setupUi(this);
     ui->fWhite->setText(QMainWindow::tr(ss.str().c_str()));
     ss.str("");
     ss << dat->getFinalWheat() << " sticks of wheat";
@@ -20,7 +24,6 @@ resultWnd::resultWnd(QWidget *parent, breadData *dat) :
     ss.str("");
     ss << "White: " << dat->getWhiteLeft();
     ui->lWhite->setText(QMainWindow::tr(ss.str().c_str()));
-
 }
 
 resultWnd::~resultWnd()

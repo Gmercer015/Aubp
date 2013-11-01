@@ -7,6 +7,13 @@
 class breadData;
 class Settings;
 
+//for internal state
+enum STATE{
+    NONE=0,
+    MIXED=1,
+    CUSTOM=2
+};
+
 namespace Ui {
 class MainWindow;
 }
@@ -35,7 +42,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     //determines if caterting order is present
-    unsigned short internalState;
+    STATE internalState;
     //bread data for program!
     Settings *s;
     breadData *dit;

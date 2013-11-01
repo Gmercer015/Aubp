@@ -18,8 +18,11 @@ public:
     ~Settings();
     void showData();
     void writeBackToFileUpdate();
+    void getSetData();
 private slots:
     void on_WriteCance_accepted();
+
+    void on_RNDUPIN_activated(const QString &arg1);
 
 private:
 

@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "ui_mainwindow.h"
+#include "mainwindow.h"
 #include <QtWidgets>
 #include <QMainWindow>
 
@@ -16,6 +17,8 @@ enum DAY{
     FRI=5,
     SAT=6
 };
+
+const int WEEK_COUNT = 7;
 
 class resultWnd;
 
@@ -32,7 +35,7 @@ public:
     void _brdLink(QMainWindow *linker=NULL, Ui::MainWindow *ui=NULL);
 
     //get input from boxes on window
-    void gatherInput(int);
+    void gatherInput(STATE);
 
     //calculate bread needed using given values
     void calculateBread();
@@ -78,7 +81,7 @@ protected:
     int bckUpWheat;                                 //quick revert to last val
     double breadCost;                               //default = 18.5
     //includes for every day of the week
-    std::vector<unsigned int> dailySales;           //sales throughout the week
+    std::vector<unsigned int> dailySales;           //default = 1000
 private:
     int round(int);                                 //round func for algorithm
     Ui::MainWindow *usI;                            //main window UI
