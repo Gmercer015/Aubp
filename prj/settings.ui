@@ -58,12 +58,12 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>190</y>
-     <width>381</width>
+     <width>402</width>
      <height>49</height>
     </rect>
    </property>
@@ -224,7 +224,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -238,6 +238,9 @@
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QLabel" name="BreadCostL">
+        <property name="toolTip">
+         <string>Company bread cost constant</string>
+        </property>
         <property name="text">
          <string>Bread cost:</string>
         </property>
@@ -252,6 +255,9 @@
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QLabel" name="WhiteLeftL">
+        <property name="toolTip">
+         <string>Amount of white left in the last box</string>
+        </property>
         <property name="text">
          <string>White left:</string>
         </property>
@@ -266,6 +272,9 @@
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
        <widget class="QLabel" name="WheatLeftL">
+        <property name="toolTip">
+         <string>Amount of wheat left in the last box</string>
+        </property>
         <property name="text">
          <string>Wheat left:</string>
         </property>
@@ -278,7 +287,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -292,6 +301,9 @@
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
        <widget class="QLabel" name="RND_UPL">
+        <property name="toolTip">
+         <string>Force program to always round up</string>
+        </property>
         <property name="text">
          <string>Round Up(all)</string>
         </property>
@@ -317,6 +329,9 @@
      <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
        <widget class="QLabel" name="StcksPerBoxL">
+        <property name="toolTip">
+         <string>Amount of sticks per box</string>
+        </property>
         <property name="text">
          <string>Sticks per box:</string>
         </property>
@@ -331,6 +346,9 @@
      <layout class="QHBoxLayout" name="horizontalLayout_6">
       <item>
        <widget class="QLabel" name="RndBreadToL">
+        <property name="toolTip">
+         <string>Round bread to the nearest x whole number</string>
+        </property>
         <property name="text">
          <string>Round bread to:</string>
         </property>

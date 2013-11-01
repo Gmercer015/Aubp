@@ -39,6 +39,8 @@ private slots:
 
     void on_actionRevert_stcks_Left_to_last_value_triggered();
 
+    void on_actionHelp_me_please_triggered();
+
 private:
     Ui::MainWindow *ui;
     //determines if caterting order is present

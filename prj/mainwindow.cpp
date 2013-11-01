@@ -110,7 +110,7 @@ void MainWindow::on_actionContact_me_about_issues_triggered()
     QMessageBox message;
     message.setWindowTitle(tr("Feedback/issues"));
     message.setTextFormat(Qt::RichText);
-    message.setText("<a href=\"mailto:brdcount.help@gmail.com\">brdcount.help@gmail.com</a>\nplease expect a couple days before a response, I'll try my best to answer your question/issue.");
+    message.setText("Please contact me at <a href=\"mailto:brdcount.help@gmail.com\">brdcount.help@gmail.com</a>");
     message.setStandardButtons(QMessageBox::Ok);
     message.exec();
 }
@@ -123,4 +123,18 @@ void  MainWindow::on_actionRevert_stcks_Left_to_last_value_triggered()
     else
         return;
 
+}
+
+void MainWindow::on_actionHelp_me_please_triggered()
+{
+    std::stringstream s;
+    s <<
+         "Setup\n\nThe only prerequisites are the daily estimates for the week"
+      << " and the amount of bread left in the white/wheat box before pulling. You can access these values by going to Vars->Edit Values"
+      << " . Modify the values to fit your bread pull and hit OK(not hitting ok will cancel any changes).\n\n" <<
+         "Using\n\nCount the number of baked white and wheat sticks you have on hand. Once counted check"
+      << " for any catering orders due the next day, if an order asks to mix the bread select the 'Mixed' tab and enter how many feet of sandwich were ordered. If the catering"
+      << " order specifies an uneven amount of white and wheat, choose 'Custom' and enter the amount of sticks needed. Afterwards hit show and the amount of bread needed for the"
+      << " pull along with the remaining white/wheat will be displayed.";
+    QMessageBox::information(this,tr("HowTo"),tr(s.str().c_str()));
 }
