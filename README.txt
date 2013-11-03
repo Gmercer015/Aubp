@@ -14,7 +14,7 @@ Want to try out the current version?
 	still under development, bugs may be present.
 
 
-Program stucture breakdown:
+Program stucture breakdown(outdated):
 
 	Main-
 		core file, initializes object needed and links the window with
