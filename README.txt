@@ -7,6 +7,12 @@ Purpose:
 	error. Currenty being dev'd on my own time in hopes of bettering the
 	company when finished
 
+Want to try out the current version?
+
+	Make sure to switch on over to the release branch where you can find
+	a compiled and functional program to use! Take into account this is
+	still under development, bugs may be present.
+
 
 Program stucture breakdown:
 
