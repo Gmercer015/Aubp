@@ -14,6 +14,8 @@
 breadData::breadData(std::string fileIn):
     finalWhite(0),
     finalWheat(0),
+    statWhitePulled(0),
+    statWheatPulled(0),
     RND_UP(false),
     stcksPerBox(30),
     rndSticksTo(4),
@@ -66,7 +68,54 @@ void breadData::writeData()
     writeOut << "\nWHITEWHEATLEFT\n" << whiteLeft << " " << wheatLeft << "\n";
     writeOut << "\nBCKUP\n" << bckUpWhite << " " << bckUpWheat << "\n";
     writeOut << "\nBRDCONST\n" << breadCost << "\n";
+    writeOut << "\nSTKSTOTAL\n" << statWhitePulled << " " << statWheatPulled << "\n";
     writeOut.close();
+
+}
+
+void breadData::writeLog(int key)
+{
+    std::ofstream fout;
+
+    //if the user passes in hard reset for log
+    if(key == RESET_HARD){
+        //make sure user really does want to reset log?
+        if( QMessageBox::question(mainWnd,QMainWindow::tr("Reset Log?")
+                                  ,QMainWindow::tr("Really reset contents of log?")
+                                  ,QMessageBox::Yes
+                                  ,QMessageBox::No) == QMessageBox::Yes) {
+            fout.open("log.txt");       //open at beginning of file
+            fout << "";                 //write in nothing
+            fout.close();               //close file and return
+            statWhitePulled = 0;        //reset log vars
+            statWheatPulled = 0;
+            return;
+        }
+    }
+
+    fout.open("log.txt",std::ios::app);
+    if(!fout.is_open()){
+        QMessageBox::critical(mainWnd,QMainWindow::tr("Error_writeLog()"),QMainWindow::tr("Could not open file to write"));
+        return;
+    }
+
+    time_t t = time(0);
+    struct tm * now = localtime(&t);
+    fout << "\n\nDATE: "
+         << (now->tm_year + 1900) << "-"
+         << (now->tm_mon + 1) << "-"
+         << (now->tm_mday) << std::endl << "  "
+         << "White Pulled: " << finalWhite << " (" << (int)((whiteSticks / (double)(whiteSticks + wheatSticks)) * 100) << "%)"
+         << std::endl << "  "
+         << "Wheat Pulled: " << finalWheat << " (" << (int)((wheatSticks / (double)(whiteSticks + wheatSticks)) * 100) << "%)"
+         << std::endl << "  "
+         << "PULLED TO DATE: " << std::endl << "  "
+         << "White: " << statWhitePulled << " (" << (int)((statWhitePulled / (double)(statWheatPulled + statWhitePulled)) * 100) << " %)"
+         << std::endl << "  "
+         << "Wheat: " << statWheatPulled << " (" << (int)((statWheatPulled / (double)(statWheatPulled + statWhitePulled)) * 100) << " %)";
+
+
+
 }
 
 
@@ -110,6 +159,9 @@ bool breadData::readData()
         }
         if(readTMP == "BCKUP"){                 //back up for sticks left(revert purposes)
             inFile >> bckUpWhite >> bckUpWheat;
+        }
+        if(readTMP == "STKSTOTAL"){             //total sticks for log
+            inFile >> statWhitePulled >> statWheatPulled;
         }
     }
     inFile.close();
@@ -168,9 +220,25 @@ void breadData::calculateBread()
     if(wheatLeft < 0)
         wheatLeft = stcksPerBox + wheatLeft;
 
+    statWhitePulled+= finalWhite;
+    statWheatPulled+= finalWheat;
     //display data and show window
     fin->res(this);
     fin->show();
+}
+
+bool breadData::checkNewWeek()
+{
+    time_t t = time(0);
+    struct tm * now = localtime(&t);
+    int dayIndex = now->tm_wday;
+    if(dayIndex == 0){                      //if the current day is sunday
+        if(QMessageBox::question(mainWnd,QMainWindow::tr("Continue?"),
+                              QMainWindow::tr("The application has detected that tommorow is the start of a new week. Are monday's sales set accordingly?"),
+                              QMessageBox::Yes,QMessageBox::No) == QMessageBox::Yes)
+            return true;
+    }
+    return false;
 }
 
 int breadData::round(int num)

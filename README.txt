@@ -11,21 +11,20 @@ Purpose:
 Program stucture breakdown:
 
 	Main-
-		core file, initializes object needed and links the window with
-		our data object. executes QApp's main loop to run GUI
+		Initializes objects needed and links the window with the 
+		given bread data object. Executes QT main loop.
 	MainWindow-
-		parent window, and most likely the only window to be used at 
-		this stage in development. Mainwindow handles the back end of 
-		the program and makes calls to the data object to receive 
-		values to display
+		Parent window to all other widegts in the program. Mainwindow
+		is the base of the program and provides input for bread as
+		well as a window for the results overlay to display. Menu
+		consists of value editing tab and tools that could prove
+		useful during operation.
 	BreadData-
-		most specific file currently. this object holds all information
-		specific to the breadcount including daily numbers, last bread
-		count received, number of sticks and more to make the bread pull
-		easier for everyone. obect requires linking to a window before 
-		being used, so in theroy one could emply this program as a side 
-		option for a much larger program by linking the object with a 
-		child window.
+		Bread and butter of the application. BreadData holds all
+		bread related variables in a protected state as well as
+		offering getter/setter methods for every single var.
+		This class also is responsible for writing data to the
+		log/format and reading data from the format.dat file.
 	Settings-
 		implemented to create a highly customizable enviroment, 
 		hopefully  to encompass more than just store 100 of Port

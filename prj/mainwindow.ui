@@ -148,6 +148,7 @@
      <string>Tools</string>
     </property>
     <addaction name="actionRevert_stcks_Left_to_last_value"/>
+    <addaction name="actionReset_Log"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -184,6 +185,11 @@
   <action name="actionRevert_stcks_Left_to_last_value">
    <property name="text">
     <string>&amp;Revert Sticks To Prev</string>
+   </property>
+  </action>
+  <action name="actionReset_Log">
+   <property name="text">
+    <string>Reset Log</string>
    </property>
   </action>
  </widget>

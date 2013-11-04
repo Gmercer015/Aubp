@@ -88,9 +88,13 @@ void MainWindow::on_showBread_clicked()
     if(!dit->readData()){
         QApplication::quit();
     } else {
-    dit->gatherInput(internalState);    //read user entered input
-    dit->calculateBread();              //find results
-    dit->writeData();                   //write any new data to file
+        if(dit->checkNewWeek()) {               //make sure user knows that tommorow is a new week!
+            dit->gatherInput(internalState);    //read user entered input
+            dit->calculateBread();              //find results
+            dit->writeData();                   //write any new data to file
+            dit->writeLog();
+        } else
+            QMessageBox::information(this,tr("Skipped"),tr("Nothing was done..."));
     }
 
 }
@@ -117,8 +121,11 @@ void MainWindow::on_actionContact_me_about_issues_triggered()
 
 void  MainWindow::on_actionRevert_stcks_Left_to_last_value_triggered()
 {
+    std::stringstream ss;
+    ss << "Revert (" << dit->getWhiteLeft() << "/" << dit->getWheatLeft() << ") sticks left to"
+       << " (" << dit->getBackUpWhite() << "/" << dit->getBackUpWheat() << ") sticks left?: (WHITE/WHEAT)";
     //ask user if he/she is sure they want to revert, then move forward with revert if so
-    if(QMessageBox::information(this,tr("Revert?"),tr("revert sticks to prev recorded?"),QMessageBox::Yes,QMessageBox::No) == QMessageBox::Yes)
+    if(QMessageBox::information(this,tr("Revert?"),tr(ss.str().c_str()),QMessageBox::Yes,QMessageBox::No) == QMessageBox::Yes)
         dit->revertSticks();
     else
         return;
@@ -137,4 +144,9 @@ void MainWindow::on_actionHelp_me_please_triggered()
       << " order specifies an uneven amount of white and wheat, choose 'Custom' and enter the amount of sticks needed. Afterwards hit show and the amount of bread needed for the"
       << " pull along with the remaining white/wheat will be displayed.";
     QMessageBox::information(this,tr("HowTo"),tr(s.str().c_str()));
+}
+
+void MainWindow::on_actionReset_Log_triggered()
+{
+    dit->writeLog(RESET_HARD);
 }

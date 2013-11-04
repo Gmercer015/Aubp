@@ -41,6 +41,8 @@ private slots:
 
     void on_actionHelp_me_please_triggered();
 
+    void on_actionReset_Log_triggered();
+
 private:
     Ui::MainWindow *ui;
     //determines if caterting order is present

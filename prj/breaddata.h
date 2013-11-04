@@ -19,6 +19,7 @@ enum DAY{
 };
 
 const int WEEK_COUNT = 7;
+const int RESET_HARD = -1;
 
 class resultWnd;
 
@@ -40,7 +41,12 @@ public:
     //calculate bread needed using given values
     void calculateBread();
 
+    //check if new week and notify user
+    bool checkNewWeek();
+
+    //write data to file
     void writeData();
+    void writeLog(int key=0);
 
     //for quick tools
     void revertSticks();
@@ -50,6 +56,8 @@ public:
     unsigned int getFinalWheat(){return finalWheat;}
     int getWhiteLeft(){return whiteLeft;}
     int getWheatLeft(){return wheatLeft;}
+    int getBackUpWhite() {return bckUpWhite;}
+    int getBackUpWheat() {return bckUpWheat;}
     bool getRND_UP();
     int getStcksPerBox();
     int getRndSticksTo();
@@ -71,6 +79,9 @@ protected:
 
     unsigned int finalWhite;                        //final sticks needed
     unsigned int finalWheat;
+
+    unsigned long statWhitePulled;                  //total white pulled(log)
+    unsigned long statWheatPulled;                  //total wheat pulled(log)
 
     bool RND_UP;                                    //default = FALSE
     int stcksPerBox;                                //default = 30
