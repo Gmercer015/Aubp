@@ -45,6 +45,7 @@ void MainWindow::_link(breadData *obj)
 
     dit = obj;                                          //object is not NULL, so set internal data
     dit->_brdLink(this,ui);                             //link bread object with this window
+    dit->readData();
     s = new Settings(this,dit);                         //main window and breadData object for displaying
 }
 

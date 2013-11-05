@@ -77,8 +77,8 @@ protected:
     int whiteSticks;                                //user input
     int wheatSticks;                                //user input
 
-    unsigned int finalWhite;                        //final sticks needed
-    unsigned int finalWheat;
+    int finalWhite;                                 //final sticks needed
+    int finalWheat;
 
     unsigned long statWhitePulled;                  //total white pulled(log)
     unsigned long statWheatPulled;                  //total wheat pulled(log)

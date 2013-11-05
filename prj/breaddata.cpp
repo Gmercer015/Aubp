@@ -210,6 +210,10 @@ void breadData::calculateBread()
     finalWhite = round((int)bread - whiteSticks);
     finalWheat = round((int)bread - wheatSticks);
 
+    //make sure final bread is either zero or the number needed
+    finalWhite = (finalWhite > 0 ? finalWhite : 0);
+    finalWheat = (finalWheat > 0 ? finalWheat : 0);
+
     bckUpWhite = whiteLeft;                 //used for quick revert
     bckUpWheat = wheatLeft;                 //quick revet back to changes
     //find sticks remaining from last box
@@ -237,7 +241,8 @@ bool breadData::checkNewWeek()
                               QMainWindow::tr("The application has detected that tommorow is the start of a new week. Are monday's sales set accordingly?"),
                               QMessageBox::Yes,QMessageBox::No) == QMessageBox::Yes)
             return true;
-    }
+    } else
+        return true;
     return false;
 }
 
