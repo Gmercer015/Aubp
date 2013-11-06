@@ -197,7 +197,10 @@ void breadData::calculateBread()
 {
     time_t t = time(0);
     struct tm * now = localtime(&t);        //grab local time from system
-    int dayIndex = now->tm_wday;            //days since sunday(0-6)
+    int dayIndex = (now->tm_wday)+1;        //days since sunday(0-6)
+    if(dayIndex==7)                         //if the index goes over then push back to zero
+        dayIndex=0;
+
 
     //proj sales divded by breadcost split for both white and wheat
     double bread = static_cast<double>(dailySales.at(dayIndex)) / (breadCost * 2.0);
@@ -218,11 +221,18 @@ void breadData::calculateBread()
     bckUpWheat = wheatLeft;                 //quick revet back to changes
     //find sticks remaining from last box
     whiteLeft = whiteLeft - finalWhite;
-    if(whiteLeft < 0)
+    if(whiteLeft < 0){
         whiteLeft = stcksPerBox + whiteLeft;
+        if(whiteLeft < 0)
+            whiteLeft = 0;                      //still zero....
+    }
     wheatLeft = wheatLeft - finalWheat;
-    if(wheatLeft < 0)
+    if(wheatLeft < 0) {
         wheatLeft = stcksPerBox + wheatLeft;
+        if(wheatLeft < 0)                       //still zero? wow
+            wheatLeft = 0;
+    }
+
 
     statWhitePulled+= finalWhite;
     statWheatPulled+= finalWheat;
