@@ -387,7 +387,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Amount left in last box:</string>
+    <string>Amount left in last box(Theoretical):</string>
    </property>
   </widget>
   <widget class="Line" name="line">

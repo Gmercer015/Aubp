@@ -3,6 +3,7 @@
 #include "breaddata.h"
 #include "ui_mainwindow.h"
 #include "settings.h"
+#include "log.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -12,8 +13,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     internalState(NONE),
-    s(NULL)
+    s(NULL),
+    lg(NULL)
 {
+    lg = new Log(this);
     setFixedHeight(273);
     setFixedWidth(364);
     ui->setupUi(this);
@@ -32,21 +35,27 @@ MainWindow::~MainWindow()
         delete s;
     if(ui != NULL)
         delete ui;
+    if(lg != NULL)
+        delete lg;
 }
 
 //link the main window with a bread object to be used for calculations and auditing
-void MainWindow::_link(breadData *obj)
+bool MainWindow::_link(breadData *obj)
 {
 
     if(obj == NULL) {                                   //make sure user passed in valid object file
         QMessageBox::critical(this,tr("Error_link()"),tr("breadData passed is NULL"));
-        return;
+        return false;
     }
 
     dit = obj;                                          //object is not NULL, so set internal data
     dit->_brdLink(this,ui);                             //link bread object with this window
-    dit->readData();
+    if(!dit->readData()){
+        QMessageBox::information(this,tr("Skipping"),tr("No file was created...Exiting..."));
+        return false;
+    }
     s = new Settings(this,dit);                         //main window and breadData object for displaying
+    return true;
 }
 
 //determines if a catering order exists
@@ -147,7 +156,25 @@ void MainWindow::on_actionHelp_me_please_triggered()
     QMessageBox::information(this,tr("HowTo"),tr(s.str().c_str()));
 }
 
-void MainWindow::on_actionReset_Log_triggered()
+void MainWindow::on_actionLog_triggered()
 {
     dit->writeLog(RESET_HARD);
+}
+
+void MainWindow::on_actionData_triggered()
+{
+    if(QMessageBox::question(this,tr("Data Reset"),tr("Reseting the data will require the program to exit. Continue?"),QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes)
+    {
+        if( remove("format.dat") != 0) {
+            QMessageBox::information(this, tr("Error_Reset()"), tr("Error deleting data file..."));
+        }
+        QApplication::quit();
+
+    }
+}
+
+void MainWindow::on_actionShow_Log_triggered()
+{
+    lg->show();
+    lg->showLog();
 }

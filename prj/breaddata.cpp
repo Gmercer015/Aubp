@@ -6,6 +6,7 @@
 #include <QApplication>
 #include <QMainWindow>
 #include <QtWidgets>
+#include <iostream>
 #include <sstream>
 #include <fstream>
 #include <ctime>
@@ -101,7 +102,7 @@ void breadData::writeLog(int key)
 
     time_t t = time(0);
     struct tm * now = localtime(&t);
-    fout << "\n\nDATE: "
+    fout << "DATE: "
          << (now->tm_year + 1900) << "-"
          << (now->tm_mon + 1) << "-"
          << (now->tm_mday) << std::endl << "  "
@@ -112,7 +113,9 @@ void breadData::writeLog(int key)
          << "PULLED TO DATE: " << std::endl << "  "
          << "White: " << statWhitePulled << " (" << (int)((statWhitePulled / (double)(statWheatPulled + statWhitePulled)) * 100) << " %)"
          << std::endl << "  "
-         << "Wheat: " << statWheatPulled << " (" << (int)((statWheatPulled / (double)(statWheatPulled + statWhitePulled)) * 100) << " %)";
+         << "Wheat: " << statWheatPulled << " (" << (int)((statWheatPulled / (double)(statWheatPulled + statWhitePulled)) * 100) << " %)"
+         << "\n\n";
+
 
 
 
@@ -289,9 +292,34 @@ double breadData::getBreadCost()
     return breadCost;
 }
 
+void breadData::getLog(std::stringstream& ss)
+{
+    std::ifstream is("log.txt");                //open file for reading
+    std::string tmp;                            //string to hold file contents
+    char *buffer;                               //buffer for file block
+    int len;
+    if(is) {
+        is.seekg(0, is.end);
+        len = is.tellg();                       //find streamsize of file
+        if(len == 0){
+            ss << "No Log Information Found.";
+            return;
+        }
+        is.seekg(0,is.beg);                     //go back to beginning
+
+        buffer = new char[len];                 //read into buffer
+        is.read(buffer,len);
+        is.close();                             //close file and assign values
+
+        tmp.assign(buffer);
+        ss << tmp;
+        delete [] buffer;
+    }
+}
+
 int breadData::getEstSales(DAY d)
 {
-    switch(d) {
+    switch(d) {                             //switch ENUM for specific value
         case MON:
             return dailySales.at(1);
         case TUES:

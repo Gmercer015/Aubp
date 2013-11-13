@@ -6,6 +6,7 @@
 
 class breadData;
 class Settings;
+class Log;
 
 //for internal state
 enum STATE{
@@ -26,7 +27,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void _link(breadData *obj);\
+    bool _link(breadData *obj);\
 
 private slots:
     void on_comboBox_activated(const QString &arg1);
@@ -41,7 +42,11 @@ private slots:
 
     void on_actionHelp_me_please_triggered();
 
-    void on_actionReset_Log_triggered();
+    void on_actionLog_triggered();
+
+    void on_actionData_triggered();
+
+    void on_actionShow_Log_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -49,6 +54,7 @@ private:
     STATE internalState;
     //bread data for program!
     Settings *s;
+    Log *lg;
     breadData *dit;
 };
 

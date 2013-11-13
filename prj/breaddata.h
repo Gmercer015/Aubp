@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
+#include <sstream>
 #include "ui_mainwindow.h"
 #include "mainwindow.h"
 #include <QtWidgets>
@@ -62,6 +64,7 @@ public:
     int getStcksPerBox();
     int getRndSticksTo();
     double getBreadCost();
+    void getLog(std::stringstream& ss);
     int getEstSales(DAY);
     //set functions
     void setRND_UP(bool);

@@ -140,15 +140,23 @@
      <x>0</x>
      <y>0</y>
      <width>364</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>Tools</string>
     </property>
+    <widget class="QMenu" name="menuReset">
+     <property name="title">
+      <string>Reset</string>
+     </property>
+     <addaction name="actionLog"/>
+     <addaction name="actionData"/>
+    </widget>
     <addaction name="actionRevert_stcks_Left_to_last_value"/>
-    <addaction name="actionReset_Log"/>
+    <addaction name="actionShow_Log"/>
+    <addaction name="menuReset"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -187,9 +195,24 @@
     <string>&amp;Revert Sticks To Prev</string>
    </property>
   </action>
-  <action name="actionReset_Log">
+  <action name="actionReset_Data">
    <property name="text">
-    <string>Reset Log</string>
+    <string>Reset Data</string>
+   </property>
+  </action>
+  <action name="actionLog">
+   <property name="text">
+    <string>Log</string>
+   </property>
+  </action>
+  <action name="actionData">
+   <property name="text">
+    <string>Data</string>
+   </property>
+  </action>
+  <action name="actionShow_Log">
+   <property name="text">
+    <string>Show Log</string>
    </property>
   </action>
  </widget>
