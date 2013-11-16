@@ -90,6 +90,7 @@ void breadData::writeLog(int key)
             fout.close();               //close file and return
             statWhitePulled = 0;        //reset log vars
             statWheatPulled = 0;
+            writeData();
             return;
         }
     }
@@ -106,9 +107,9 @@ void breadData::writeLog(int key)
          << (now->tm_year + 1900) << "-"
          << (now->tm_mon + 1) << "-"
          << (now->tm_mday) << std::endl << "  "
-         << "White Pulled: " << finalWhite << " (" << (int)((whiteSticks / (double)(whiteSticks + wheatSticks)) * 100) << "%)"
+         << "White Pulled: " << finalWhite << " (" << (int)((finalWhite / (double)(finalWheat + finalWhite)) * 100) << "%)"
          << std::endl << "  "
-         << "Wheat Pulled: " << finalWheat << " (" << (int)((wheatSticks / (double)(whiteSticks + wheatSticks)) * 100) << "%)"
+         << "Wheat Pulled: " << finalWheat << " (" << (int)((finalWheat / (double)(finalWhite + finalWheat)) * 100) << "%)"
          << std::endl << "  "
          << "PULLED TO DATE: " << std::endl << "  "
          << "White: " << statWhitePulled << " (" << (int)((statWhitePulled / (double)(statWheatPulled + statWhitePulled)) * 100) << " %)"
