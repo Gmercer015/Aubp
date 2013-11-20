@@ -213,9 +213,12 @@ void breadData::calculateBread()
     double decpart = bread - intpart;
     //round bread to nearest whole number
     bread = decpart < 0.5 ? floor(bread) : ceil(bread);
+    finalWhite = round((int)(bread - whiteSticks));
+    finalWheat = round((int)(bread - wheatSticks));
 
-    finalWhite = round((int)bread - whiteSticks);
-    finalWheat = round((int)bread - wheatSticks);
+
+
+
 
     //make sure final bread is either zero or the number needed
     finalWhite = (finalWhite > 0 ? finalWhite : 0);
@@ -263,6 +266,8 @@ bool breadData::checkNewWeek()
 int breadData::round(int num)
 {
     if(RND_UP)                          //if always round up
+        if(num%rndSticksTo==0)
+            return num;
         return num + (rndSticksTo - (num % rndSticksTo));
     if(num % rndSticksTo < 2)
         return num - num % rndSticksTo;

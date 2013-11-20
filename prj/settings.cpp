@@ -161,7 +161,7 @@ void Settings::getSetData()
         tmpSales.at(SAT) = tmp;
 
     //sunday
-    tmp = atoi(ui->TuesIN->text().toStdString().c_str());
+    tmp = atoi(ui->SunIN->text().toStdString().c_str());
     if(tmp < 0){
         QMessageBox::critical(this,QMainWindow::tr("Error"),QMainWindow::tr("Sunday sales cannot fall below 0... Skipping"));
         tmpSales.push_back(cpy->getEstSales(SUN));
