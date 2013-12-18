@@ -12,6 +12,10 @@ resultWnd::resultWnd(QWidget *parent) :
 
 void resultWnd::res(breadData *dat)
 {
+    if(dat->getRND_UP())
+        ui->forceRndup->setText(QMainWindow::tr("Force Round Up is ON"));
+    else
+        ui->forceRndup->setText(QMainWindow::tr("Force Round Up is OFF"));
     std::stringstream ss;
     ss << dat->getFinalWhite() << " sticks of white";
     ui->fWhite->setText(QMainWindow::tr(ss.str().c_str()));

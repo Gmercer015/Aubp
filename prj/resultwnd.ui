@@ -298,7 +298,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="forceRndup">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -444,7 +444,7 @@
   </widget>
   <zorder>fWhite</zorder>
   <zorder>fWheat</zorder>
-  <zorder>label_3</zorder>
+  <zorder>forceRndup</zorder>
   <zorder>lWhite</zorder>
   <zorder>lWheat</zorder>
   <zorder>label_4</zorder>

@@ -62,9 +62,9 @@ bool MainWindow::_link(breadData *obj)
 void MainWindow::on_comboBox_activated(const QString &arg1)
 {
 
-    if(arg1 == tr("Mixed")) {                               //if the catering order is mixed bread, only one input source is needed
+    if(arg1 == tr("Mixed(FEET)")) {                               //if the catering order is mixed bread, only one input source is needed
         internalState = MIXED;
-        ui->whiteCL->setText(tr("Feet of Bread:"));         //set the text to account for only one set of input
+        ui->whiteCL->setText(tr("FEET of Bread:"));         //set the text to account for only one set of input
         ui->whiteCL->show();
         ui->whiteCIN->show();
         if(!ui->wheatCL->isHidden()) {                      //make sure second box is hidden
@@ -75,7 +75,7 @@ void MainWindow::on_comboBox_activated(const QString &arg1)
         }
     }
     //custom amount of sticks entered
-    if(arg1 == tr("Custom")) {
+    if(arg1 == tr("Custom(STICKS)")) {
         internalState = CUSTOM;
         ui->whiteCL->setText(tr("Catering White:"));        //show both hidden input sources
         ui->wheatCL->show();
