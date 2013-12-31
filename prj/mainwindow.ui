@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Bread Count</string>
+   <string>Aubp</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="showBread">
@@ -170,6 +170,7 @@
     </property>
     <addaction name="actionHelp_me_please"/>
     <addaction name="actionContact_me_about_issues"/>
+    <addaction name="queryUpdate"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuTools"/>
@@ -192,7 +193,7 @@
   </action>
   <action name="actionRevert_stcks_Left_to_last_value">
    <property name="text">
-    <string>&amp;Revert Sticks To Prev</string>
+    <string>&amp;Revert Sticks Left To Previous</string>
    </property>
   </action>
   <action name="actionReset_Data">
@@ -212,7 +213,12 @@
   </action>
   <action name="actionShow_Log">
    <property name="text">
-    <string>Show Log</string>
+    <string>Log</string>
+   </property>
+  </action>
+  <action name="queryUpdate">
+   <property name="text">
+    <string>Check for Updates</string>
    </property>
   </action>
  </widget>

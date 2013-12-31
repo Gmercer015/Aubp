@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Help</class>
+ <widget class="QDialog" name="Help">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Instructions</string>
+  </property>
+  <widget class="QTabWidget" name="helpTab">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>500</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="currentIndex">
+    <number>2</number>
+   </property>
+   <widget class="QWidget" name="getStartedTab">
+    <attribute name="title">
+     <string>Getting Started</string>
+    </attribute>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>141</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Phetsarath OT</family>
+       <pointsize>12</pointsize>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="text">
+      <string>What do I need?</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>70</y>
+       <width>431</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The only data &lt;span style=&quot; font-style:italic;&quot;&gt;Aubp&lt;/span&gt; requires are the daily sales estimates, which can usually be found above the work schedule posted weekly. &lt;span style=&quot; font-style:italic;&quot;&gt;Aubp &lt;/span&gt;asks for the amount of bread left in the last box of both white and wheat, but this feature is &lt;span style=&quot; font-weight:600;&quot;&gt;optional&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>251</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Phetsarath OT</family>
+       <pointsize>12</pointsize>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="text">
+      <string>How do I enter my data?</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser_2">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>240</y>
+       <width>431</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Data can be entered and modified through the &lt;span style=&quot; font-weight:600;&quot;&gt;settings &lt;/span&gt;window. to find this window navigate to &lt;span style=&quot; font-weight:600;&quot;&gt;Edit -&amp;gt; Values&lt;/span&gt;, and the window will appear. Daily Sales are entered per day under their respective name. &lt;span style=&quot; font-style:italic;&quot;&gt;Remember that sales may change weekly, currently Aubp cannot know of these changes unless you re-enter them!&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-style:italic;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Daily Sales are just one of the many options &lt;span style=&quot; font-style:italic;&quot;&gt;Aubp&lt;/span&gt; allows to be customized, make sure the values in the settings window mirror that of your stores traditional bread pull. For more information on the given value hover your cursor over the name for a few seconds&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="findBreadTab">
+    <attribute name="title">
+     <string>Running Aubp</string>
+    </attribute>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>241</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Phetsarath OT</family>
+       <pointsize>12</pointsize>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="text">
+      <string>What Exactly Am I Entering?</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser_3">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>60</y>
+       <width>421</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Aubp&lt;/span&gt; requires exactly what the traditional bread pull requires. Count up your left over &lt;span style=&quot; font-weight:600;&quot;&gt;whole&lt;/span&gt; baked sticks and check around for any catering orders the next day.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>150</y>
+       <width>171</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Phetsarath OT</family>
+       <pointsize>12</pointsize>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="text">
+      <string>How Do I Enter This?</string>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser_4">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>180</y>
+       <width>421</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The first two input boxes are only for your left over whole baked sticks *&lt;span style=&quot; font-style:italic;&quot;&gt;Do not put any catering order related data here. &lt;/span&gt;These ask for whole sticks left, make sure you input the leftover white and wheat correctly.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;For any catering orders use the drop down bar to select the correct section. Any orders that have 50/50 bread can be entered under the &lt;span style=&quot; font-style:italic;&quot;&gt;mixed&lt;/span&gt; tab, note this tab requires &lt;span style=&quot; font-weight:600;&quot;&gt;feet of bread&lt;/span&gt; instead of sticks. Other uneven orders use the custom&lt;span style=&quot; font-style:italic;&quot;&gt; &lt;/span&gt;tab and ask for &lt;span style=&quot; font-weight:600;&quot;&gt;sticks&lt;/span&gt; of bread needed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>370</y>
+       <width>57</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Phetsarath OT</family>
+       <pointsize>12</pointsize>
+       <underline>true</underline>
+      </font>
+     </property>
+     <property name="text">
+      <string>Results</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="textEdit">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>400</y>
+       <width>421</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;After all of your necessary data has been entered into the program hit the &lt;span style=&quot; font-weight:600;&quot;&gt;show&lt;/span&gt; button located at the bottom of the screen. The window should now display how much bread you need for the next day along with the amount of bread left in the last box(given you are using this feature, if not ignore the numbers).&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;To check your recent pulls find &lt;span style=&quot; font-weight:600;&quot;&gt;File-&amp;gt;Log&lt;/span&gt; to view a history of all your bread pulls along with some statistics.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="issuesTab">
+    <attribute name="title">
+     <string>FAQ</string>
+    </attribute>
+    <widget class="QTextEdit" name="textEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>500</width>
+       <height>600</height>
+      </rect>
+     </property>
+     <property name="html">
+      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;I want to clear just one of my log entries, can I?&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:25px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Aubp currently does not support log manipulation inside of the program. If you would really like to modify the log without clearing its contents you can find log.dat in the program folder and opening with a text editor will allow for modification &lt;span style=&quot; font-style:italic;&quot;&gt;*At your own risk&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Aubp's bread predicition is always wrong, help!&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:25px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The bread pull could be wrong for a number of reasons, but here are the most common: &lt;/p&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:25px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Daily Sales are not set for the current week&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:25px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Incorrenctly entered the count/units&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:25px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Your stores bread cost value is off (&lt;span style=&quot; font-weight:600;&quot;&gt;default 18.5&lt;/span&gt;)&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:0px; margin-left:25px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The rounding units of Aubp are not set&lt;/li&gt;
+&lt;li style=&quot; margin-top:0px; margin-bottom:12px; margin-left:25px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Force round up is on/off&lt;/li&gt;&lt;/ul&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Why should I trust Aubp?&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:25px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Aubp has been in testing and use at store 100 of Las Vegas for months. Initial release bugs have been fixed and improvements are being added weekly.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;I think I found a bug in the program!&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:12px; margin-left:25px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Contact me as soon as possible, it's important to work out and fix any bugs that arise in Aubp. You can find the contact email under the &lt;span style=&quot; font-weight:600;&quot;&gt;Help&lt;/span&gt; tab&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

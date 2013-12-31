@@ -18,15 +18,18 @@ SOURCES += main.cpp\
     breaddata.cpp \
     settings.cpp \
     resultwnd.cpp \
-    log.cpp
+    log.cpp \
+    help.cpp
 
 HEADERS  += mainwindow.h \
     breaddata.h \
     settings.h \
     resultwnd.h \
-    log.h
+    log.h \
+    help.h
 
 FORMS    += mainwindow.ui \
     settings.ui \
     resultwnd.ui \
-    log.ui
+    log.ui \
+    help.ui

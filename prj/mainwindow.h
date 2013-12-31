@@ -4,9 +4,10 @@
 #include <QMainWindow>
 
 
-class breadData;
+class breadData;    //confusing as shit class hierarchy
 class Settings;
 class Log;
+class Help;
 
 //for internal state
 enum STATE{
@@ -50,12 +51,14 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    //determines if caterting order is present
-    STATE internalState;
-    //bread data for program!
-    Settings *s;
-    Log *lg;
-    breadData *dit;
+
+    STATE internalState;    //manages if catering order is present or not
+
+    Settings *s;            //Settings window
+    Log *lg;                //Log window
+    Help *hw;               //Help window
+
+    breadData *dit;         //breadData object
 };
 
 #endif // MAINWINDOW_H

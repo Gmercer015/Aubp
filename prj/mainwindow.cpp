@@ -4,19 +4,24 @@
 #include "ui_mainwindow.h"
 #include "settings.h"
 #include "log.h"
+#include "help.h"
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <QtWidgets>
 
+//MainWindow technically contains two constructors, one before link and one after link
+//  This initializes all independent objects(data that does not depend on breadData).
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     internalState(NONE),
     s(NULL),
-    lg(NULL)
+    lg(NULL),
+    hw(NULL)
 {
     lg = new Log(this);
+    hw = new Help(this);
     setFixedHeight(273);
     setFixedWidth(364);
     ui->setupUi(this);
@@ -37,9 +42,12 @@ MainWindow::~MainWindow()
         delete ui;
     if(lg != NULL)
         delete lg;
+    if(hw != NULL)
+        delete hw;
 }
 
 //link the main window with a bread object to be used for calculations and auditing
+//  technically the second constructor, all breadData dependent objects are init now
 bool MainWindow::_link(breadData *obj)
 {
 
@@ -144,16 +152,8 @@ void  MainWindow::on_actionRevert_stcks_Left_to_last_value_triggered()
 
 void MainWindow::on_actionHelp_me_please_triggered()
 {
-    std::stringstream s;
-    s <<
-         "Setup\n\nThe only prerequisites are the daily estimates for the week"
-      << " and the amount of bread left in the white/wheat box before pulling. You can access these values by going to Vars->Edit Values"
-      << " . Modify the values to fit your bread pull and hit OK(not hitting ok will cancel any changes).\n\n" <<
-         "Using\n\nCount the number of baked white and wheat sticks you have on hand. Once counted check"
-      << " for any catering orders due the next day, if an order asks to mix the bread select the 'Mixed' tab and enter how many feet of sandwich were ordered. If the catering"
-      << " order specifies an uneven amount of white and wheat, choose 'Custom' and enter the amount of sticks needed. Afterwards hit show and the amount of bread needed for the"
-      << " pull along with the remaining white/wheat will be displayed.";
-    QMessageBox::information(this,tr("HowTo"),tr(s.str().c_str()));
+    //leave it to the help window
+    hw->show();
 }
 
 void MainWindow::on_actionLog_triggered()
