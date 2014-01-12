@@ -96,6 +96,9 @@ protected:
     double breadCost;                               //default = 18.5
     //includes for every day of the week
     std::vector<unsigned int> dailySales;           //default = 1000
+private slots:
+    void on_queryUpdate_triggered();
+
 private:
     int round(int);                                 //round func for algorithm
     Ui::MainWindow *usI;                            //main window UI

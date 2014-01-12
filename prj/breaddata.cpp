@@ -382,3 +382,8 @@ void breadData::setDailySales(std::vector<unsigned int> cpy)
     }
 }
 
+
+void breadData::on_queryUpdate_triggered()
+{
+
+}
