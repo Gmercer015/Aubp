@@ -9,9 +9,8 @@ Purpose:
 
 Want to try out the current version?
 
-	Make sure to switch on over to the release branch where you can find
-	a compiled and functional program to use! Take into account this is
-	still under development, bugs may be present.
+	Check out the release tab to download setup.exe. Install breadPull 
+	in whatever location you prefer and start it up!
 
 
 Program stucture breakdown:
@@ -39,7 +38,13 @@ Program stucture breakdown:
 		change them ONLY THROUGH THIS WINDOW.changing the file 
 		will corrupt the program
 	ResultsWnd-
-		self explanatory. this is a widget that displays the results 
+		This is a widget that displays the results 
 		of the bread pull.Instead of opening a new window the ResultsWnd
 		replacing the screen by overlaying itself above MainWindow, then
 		returning to MainWindow after the user hits 'return'
+	Log-
+		Attempts to keep track of all breadpulls done by the program and
+		provide statistics to the user or serve to track down errors. The
+		log is a window itself and writes to it's own file to avoid clutter
+	Help-
+		HTML written documents on how to use Aubp effectivly
